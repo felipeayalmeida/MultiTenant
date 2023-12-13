@@ -164,7 +164,6 @@ namespace MultiTenantApp.Test.HandlerTests
             //Act
             var result = await ((IRequestHandler<DeleteUserCommand, DeleteUserResponse>)handler).Handle(command, CancellationToken.None);
 
-
             //Assert
             result.Email.Should().NotBeNullOrEmpty();
             result.IsDeleted.Should().BeTrue();
