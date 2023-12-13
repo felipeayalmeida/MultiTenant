@@ -164,12 +164,11 @@ namespace MultiTenantApp.Test.HandlerTests
             //Act
             var result = await ((IRequestHandler<DeleteUserCommand, DeleteUserResponse>)handler).Handle(command, CancellationToken.None);
 
-            //Assert
+            //Assertt
             result.Email.Should().NotBeNullOrEmpty();
             result.IsDeleted.Should().BeTrue();
             userRepository.Verify(x => x.GetUsersAsync(), Times.Once);
             userRepository.Verify(x => x.DeleteUser(It.IsAny<User>()), Times.Once);
-
         }
 
         [Fact]
